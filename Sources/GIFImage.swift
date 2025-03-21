@@ -84,12 +84,12 @@ public struct GIFImage: View {
         Image.loadImage(with: frame ?? placeholder)
             .resizable()
             .scaledToFit()
-            .onChange(of: loop) { _, newValue in
+            .onChange(of: loop, perform: { newValue in
                 handle(loop: newValue)
-            }
-            .onChange(of: animate) { _, newValue in
+            })
+            .onChange(of: animate, perform: { newValue in
                 handle(animate: newValue)
-            }
+            })
             .task(id: source, load)
     }
 
